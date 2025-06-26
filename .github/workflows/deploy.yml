@@ -12,6 +12,7 @@ on:
       - main
   release:
     types: [ published ]
+  workflow_dispatch: # can be used to trigger the workflow manually
 jobs:
   publish:
     runs-on: ubuntu-latest
