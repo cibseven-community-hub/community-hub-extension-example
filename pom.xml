@@ -2,9 +2,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.camunda.community</groupId>
-        <artifactId>community-hub-release-parent</artifactId>
-        <version>2.0.0</version>
+        <groupId>org.cibseven.community</groupId>
+        <artifactId>release-parent</artifactId>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>community-hub-extension-example</artifactId>
@@ -12,12 +12,19 @@
     <version>0.0.12-SNAPSHOT</version>
 
     <name>community-hub-extension-example</name>
-    <description>Example of a Camunda Community Extension produced by CI/CD of the HUB.</description>
-    <url>https://github.com/camunda-community-hub/community-hub-extension-example</url>
+    <description>Example of a CIB seven Community Extension produced by CI/CD of the HUB.</description>
+    <url>https://github.com/cibseven-community-hub/community-hub-extension-example</url>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        
+	    <nexus.release.repository.id>mvn-cibseven-public</nexus.release.repository.id>
+	    <nexus.release.repository>https://artifacts.cibseven.org/repository/community</nexus.release.repository>
+	    
+    	<nexus.snapshot.repository.id>mvn-cibseven-snapshots</nexus.snapshot.repository.id>
+		<nexus.snapshot.repository>https://artifacts.cibseven.org/repository/community-snapshots</nexus.snapshot.repository>
+    
     </properties>
 
     <dependencies>
@@ -94,13 +101,21 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@github.com:camunda-community-hub/community-hub-extension-example.git</connection>
-        <url>scm:git:git@github.com:camunda-community-hub/community-hub-extension-example.git</url>
-        <developerConnection>scm:git:git@github.com:camunda-community-hub/community-hub-extension-example.git</developerConnection>
+        <connection>scm:git:git@github.com:cibseven-community-hub/community-hub-extension-example.git</connection>
+        <url>scm:git:git@github.com:cibseven-community-hub/community-hub-extension-example.git</url>
+        <developerConnection>scm:git:git@github.com:cibseven-community-hub/community-hub-extension-example.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
     <developers>
+        <developer>
+            <id>cibseven.org</id>
+            <name>CIB seven Community</name>
+            <email>community@cibseven.org</email>
+            <url>http://cibseven.org</url>
+            <organization>cibseven.org</organization>
+            <organizationUrl>http://cibseven.org</organizationUrl>
+        </developer>
         <developer>
             <id>zambrovski</id>
             <name>Simon Zambrovski</name>
@@ -111,6 +126,11 @@
     </developers>
 
     <repositories>
+        <repository>
+            <id>mvn-cibseven-public</id>
+            <name>CIB seven Public Repository</name>
+            <url>https://artifacts.cibseven.org/repository/public</url>
+        </repository>
         <repository>
             <id>snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
