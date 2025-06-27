@@ -27,7 +27,6 @@
 
         <nexus.staging.deploy.id>mvn-cibseven-community</nexus.staging.deploy.id>
         <nexus.staging.deploy.url>https://artifacts.cibseven.org/repository</nexus.staging.deploy.url>
-
     </properties>
 
     <dependencies>
