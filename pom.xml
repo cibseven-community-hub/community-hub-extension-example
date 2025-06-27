@@ -24,6 +24,9 @@
         
         <nexus.snapshot.repository.id>mvn-cibseven-community-snapshots</nexus.snapshot.repository.id>
         <nexus.snapshot.repository>https://artifacts.cibseven.org/repository/community-snapshots</nexus.snapshot.repository>
+
+        <nexus.staging.deploy.id>mvn-cibseven-community</nexus.staging.deploy.id>
+        <nexus.staging.deploy.url>https://artifacts.cibseven.org/repository</nexus.staging.deploy.url>
     </properties>
 
     <dependencies>
@@ -81,12 +84,39 @@
                         <argLine>-Djava.awt.headless=true @{surefireArgLine} -XX:+StartAttachListener</argLine>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.13</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <!-- skip Mojo Execution if skip.cibseven.release is set to true -->
+                        <id>default-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                        <configuration>
+                            <detectBuildFailures>true</detectBuildFailures>
+                            <serverId>${nexus.staging.deploy.id}</serverId>
+                            <nexusUrl>${nexus.staging.deploy.url}</nexusUrl>
+                            <skipStaging>true</skipStaging>
+                            <skipNexusStagingDeployMojo>${skip.cibseven.release}</skipNexusStagingDeployMojo>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
